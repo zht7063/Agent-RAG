@@ -16,3 +16,5 @@ wheels/
 # vector store data files
 assets/vector_store/**/*.bin
 assets/vector_store/**/*.sqlite3
+
+assets
