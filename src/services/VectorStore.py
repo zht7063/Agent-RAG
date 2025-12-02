@@ -2,7 +2,7 @@
 构建向量数据库
 """
 from typing import List
-import subprocess
+# import subprocess
 from pathlib import Path
 from loguru import logger
 from langchain_openai import OpenAIEmbeddings
@@ -10,26 +10,26 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
+from config.settings import project_root
 
+# load_dotenv()
 
-load_dotenv()
+# def project_root() -> Path:
+#     """ 获取项目根目录
 
-def project_root() -> Path:
-    """ 获取项目根目录
+#     命令：`git rev-parse --show-toplevel` 可以快速找到 git 仓库的根目录，
 
-    命令：`git rev-parse --show-toplevel` 可以快速找到 git 仓库的根目录，
+#     通过 `subprocess.check_output([...])` 执行 shell 命令，返回字符串结果，
 
-    通过 `subprocess.check_output([...])` 执行 shell 命令，返回字符串结果，
+#     去掉结果两端的空白字符，得到一个 Path 对象并返回
 
-    去掉结果两端的空白字符，得到一个 Path 对象并返回
-
-    """
-    git_root = subprocess.check_output(
-        ["git", "rev-parse", "--show-toplevel"],
-        text=True
-    ).strip()
-    return Path(git_root)
+#     """
+#     git_root = subprocess.check_output(
+#         ["git", "rev-parse", "--show-toplevel"],
+#         text=True
+#     ).strip()
+#     return Path(git_root)
 
 
 class VectorStore:
@@ -76,7 +76,7 @@ class VectorStore:
         return self.vector_store.similarity_search(query)
     
 
-if __name__ == "__main__":
+def test_vector_store():
     pdf_path = project_root() / "assets" / "pdf" / "xianfa.pdf"
     
     # 检查 PDF 文件是否存在
@@ -114,3 +114,6 @@ if __name__ == "__main__":
             logger.info(f"结果 {i}: {doc.page_content[:200]}...")
     
     logger.info("测试完成！")
+
+# if __name__ == "__main__":
+#     main()

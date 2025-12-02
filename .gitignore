@@ -12,3 +12,7 @@ wheels/
 # cursor files
 .cursorrules
 .cursorignore
+
+# vector store data files
+assets/vector_store/**/*.bin
+assets/vector_store/**/*.sqlite3
