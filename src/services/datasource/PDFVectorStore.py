@@ -10,26 +10,7 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-# from dotenv import load_dotenv
 from config.settings import project_root
-
-# load_dotenv()
-
-# def project_root() -> Path:
-#     """ 获取项目根目录
-
-#     命令：`git rev-parse --show-toplevel` 可以快速找到 git 仓库的根目录，
-
-#     通过 `subprocess.check_output([...])` 执行 shell 命令，返回字符串结果，
-
-#     去掉结果两端的空白字符，得到一个 Path 对象并返回
-
-#     """
-#     git_root = subprocess.check_output(
-#         ["git", "rev-parse", "--show-toplevel"],
-#         text=True
-#     ).strip()
-#     return Path(git_root)
 
 
 class VectorStore:
