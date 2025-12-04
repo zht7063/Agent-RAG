@@ -8,6 +8,7 @@ load_dotenv()
 
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
 
 def project_root() -> Path:
     """ 获取项目根目录
@@ -24,4 +25,11 @@ def project_root() -> Path:
         text=True
     ).strip()
     return Path(git_root)
+
+
+# MCP Server 配置
+# 格式: { "server_name": { "command": "...", "args": [...], "env": {...} } }
+# 可通过环境变量 MCP_SERVERS_CONFIG 指定 JSON 配置文件路径
+MCP_SERVERS: dict[str, dict] = {
+}
 

@@ -42,7 +42,7 @@ class VectorStore:
             persist_directory = project_root() / "assets" / "vector_store"
         )
 
-    def pdf2splits(self, pdf_path: Path):
+    def pdf2splits(self, pdf_path: Path) -> List[Document]:
         """ 加载 pdf 文件
         
         1. 使用 langchain_community.document_loaders import PyPDFLoader 加载 pdf 文件
@@ -65,16 +65,17 @@ class VectorStore:
         # 3. 返回分块后的 Document 对象列表
         return splits
     
-    def join_vector_store(self, splits: List[Document]):
+    def join_vector_store(self, splits: List[Document]) -> List[str]:
         """ 将分块后的 Document 对象列表加入向量数据库 """
         ids = self.vector_store.add_documents(splits)
         logger.info(f"加入向量数据库成功，文档 ID: {ids}")
         logger.info(f"向量数据库已自动持久化到: {project_root() / 'assets' / 'vector_store'}")
+        return ids
     
-    def search_vector_store(self, query: str):
+    def search_vector_store(self, query: str) -> List[Document]:
         """ 在向量数据库中搜索相似的 Document 对象 """
         return self.vector_store.similarity_search(query)
-    
+        
 
 def test_vector_store():
     pdf_path = project_root() / "assets" / "pdf" / "xianfa.pdf"
@@ -114,6 +115,3 @@ def test_vector_store():
             logger.info(f"结果 {i}: {doc.page_content[:200]}...")
     
     logger.info("测试完成！")
-
-# if __name__ == "__main__":
-#     main()
