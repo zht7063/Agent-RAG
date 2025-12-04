@@ -19,3 +19,11 @@ assets/vector_store/**/*.bin
 assets/vector_store/**/*.sqlite3
 
 assets
+
+# Data files (runtime generated)
+data/scholar.db
+data/logs/
+data/vectorstore/
+
+# pytest cache
+.pytest_cache/
