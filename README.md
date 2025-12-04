@@ -220,9 +220,9 @@ agent-rag/
 │   │   │
 │   │   ├── database/           # 数据库服务
 │   │   │   ├── __init__.py
-│   │   │   ├── connection.py   # SQLite 连接管理
-│   │   │   ├── schema.py       # 数据库 Schema 定义
-│   │   │   └── repository.py   # 数据访问层（papers, collections, notes 等）
+│   │   │   ├── connection.py   # SQLite 连接管理（单例模式、事务、查询）
+│   │   │   ├── schema.py       # 数据库 Schema 定义和版本管理
+│   │   │   └── repository.py   # 数据访问层（Paper, Collection, Note, Experiment, Inspiration）
 │   │   │
 │   │   └── mcp/                # MCP 协议服务
 │   │       ├── __init__.py
@@ -242,7 +242,16 @@ agent-rag/
 │           ├── __init__.py
 │           ├── text_processing.py  # 文本处理
 │           ├── chunking.py         # 文档分块
-│           └── logger.py           # 日志工具
+│           └── logger.py           # 日志工具（基于 loguru）
+│
+├── tests/                      # 测试模块
+│   ├── __init__.py
+│   ├── conftest.py             # pytest 配置和共享 fixtures
+│   └── database/               # 数据库测试
+│       ├── __init__.py
+│       ├── test_connection.py  # 连接管理测试
+│       ├── test_schema.py      # Schema 管理测试
+│       └── test_repository.py  # Repository CRUD 测试
 │
 ├── data/                       # 数据目录
 │   ├── vectorstore/            # 向量数据库存储
@@ -473,3 +482,21 @@ CREATE TABLE inspirations (
 3. **配置集中**：所有配置统一管理，支持环境变量覆盖
 4. **渐进增强**：核心功能优先，扩展功能按需添加
 5. **自反思机制**：Master 具备答案质量评估和主动补充能力
+
+
+---
+
+# 附录
+
+启动测试：
+
+```
+# 运行所有测试
+uv run pytest
+
+# 运行数据库测试
+uv run pytest tests/database/ -v
+
+# 运行单个测试文件
+uv run pytest tests/database/test_repository.py -v
+```
