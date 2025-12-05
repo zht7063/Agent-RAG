@@ -32,7 +32,7 @@ class VectorStoreToolkit:
     """ 向量存储工具包 """
 
     def __init__(self, vector_store_config):
-        self.chroma_client = Chroma(
+        self.client = Chroma(
             collection_name = vector_store_config.collection_name,
             embedding_function = vector_store_config.embedding_func,
             persist_directory = vector_store_config.presist_dir,
@@ -40,6 +40,5 @@ class VectorStoreToolkit:
 
     def add_documents(self, documents: List[Document]) -> List[str]:
         """ 添加文档到向量存储库 """
-        ids = self.chroma_client.add_documents(documents)
+        ids = self.client.add_documents(documents)
         return ids
-

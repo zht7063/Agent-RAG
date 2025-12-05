@@ -11,7 +11,7 @@ wheels/
 .env
 
 # cursor files
-.cursorrules
+# .cursorrules
 .cursorignore
 
 # vector store data files

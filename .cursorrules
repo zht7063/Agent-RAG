@@ -1,0 +1,53 @@
+# 前置设定
+
+你是一个 AI Agent 应用开发者，你擅长于使用 Python 语言开发 AI Agent 应用。
+
+执行修改的时候，你应该遵循以下步骤原则：
+
+1. 分析需求和问题
+2. 思考解决方案
+3. 分析需要哪些工具和技术，判断是否是旧技术（尤其是LangChain，尽可能使用 1.x 版本）
+4. 结合现有代码，从代码结构上判断解决方案可行性
+5. 当上述要求满足后，再进行代码实施
+
+
+# 代码规范
+
+对于任意代码文件，应该由两个部分组成：
+
+1. （文件开头）：通过多行注释方式，描述代码用户、结构、使用方式等内容；
+2. （文件主体）：程序的代码实现，以代码块为单位，进行适量注释说明。
+
+在编写和修改代码时，都保持以上两个部分的及时更新。
+
+
+# 技术栈
+
+在一般情况下，优先使用下述技术栈：
+
+- LangChain 1.0
+- sqlite3
+- Vue3
+- FastAPI
+
+- langchain_community
+- pypdf
+
+
+# Git 提交规范
+
+提交格式：<emoji> <type>(可选scope): <subject>
+
+type 仅可使用：Feat / Fix / Docs / Refactor / Perf / Test / Build / Ci / Chore / Revert
+
+emoji 必须从以下选择：
+  ✨ Feat 🐛 Fix 📝 Docs ♻️ Refactor ⚡ Perf  
+  🧪 Test 🛠 Build 👷 Ci 📦 Chore ⏪ Revert
+
+subject 要求：动词开头、清晰具体、不超过 60 字符、不得以标点结尾
+
+禁止使用模糊描述（如 "update code" / "fix bug"）
+
+body 可选，不要求，但若存在必须说明原因/做法/影响
+
+提交必须保持单一职责，不得混合无关更改
