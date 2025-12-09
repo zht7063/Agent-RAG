@@ -490,7 +490,7 @@ CREATE TABLE inspirations (
 
 启动测试：
 
-```
+```bash
 # 运行所有测试
 uv run pytest
 
@@ -500,3 +500,28 @@ uv run pytest tests/database/ -v
 # 运行单个测试文件
 uv run pytest tests/database/test_repository.py -v
 ```
+
+---
+
+## 数据库演示
+
+### 快速生成演示数据库
+
+项目提供了数据库填充脚本，可以快速生成包含示例数据的演示数据库：
+
+```bash
+# 1. 生成演示数据库（包含 10 篇论文、5 个合集、笔记、实验、灵感等）
+uv run python scripts/seed_database.py
+
+# 2. 查看数据库内容
+uv run python scripts/view_database.py
+```
+
+**演示数据包含：**
+- 📄 30 篇经典 AI/ML 论文（Transformer、BERT、GPT-3、RAG、ReAct、CLIP、Stable Diffusion、LoRA、SAM 等）
+- 📚 15 个主题合集（涵盖 NLP、CV、多模态、训练优化、安全对齐等领域）
+- 📝 24 条研究笔记（重点标注、评论、问题）
+- 🔬 12 个实验记录（不同状态）
+- 💡 15 条研究灵感（不同优先级）
+
+详细说明请参考 [`scripts/README.md`](scripts/README.md)

@@ -6,7 +6,7 @@ from src.agents.worker_sql import sql_worker
 
 def test_sql_worker(query: str):
     # 创建 sql_worker 实例
-    worker = sql_worker(db_url="sqlite:///data/scholar.db")
+    worker = sql_worker(db_url="sqlite:///data/scholar_demo.db")
     resp = worker.execute(query)
 
     print(resp)
